@@ -34,7 +34,7 @@ The aim is to make a physical device that's small, resistant to theft, with a lo
 \subsubsection{API Communication}
 {\em Twilio}, a cloud communications company, provides a service where you can programmatically send and receive SMS messages or phone calls using a 3rd party API.\footnote{\url{http://www.twilio.com/sms/api}} {\em Twilio}'s service would be the backbone for communication between the device and the web app.
 
-Every API request to the web app would fit under 140 characters, as would the responses. Presently, the core calls would be:
+Every API request to the web app would fit under 140 characters (140 bytes), as would the responses. Presently, the core calls would be:
 
 \begin{enumerate}
 	\item {\tt collision}: A collision has occurred at the following latitude and longitude GPS coordinates.
