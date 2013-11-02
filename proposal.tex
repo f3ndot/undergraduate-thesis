@@ -3,74 +3,66 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lipsum}
+\usepackage{url}
 
-\title{OnStar for Bikes:\\
+\newcommand{\onstar}{{\em OnStar for Bikes}}
+
+\title{\underline{Thesis Proposal:}\\
+	\vspace{12pt}
+	OnStar for Bikes:\\
 	Automatic collision detection and response using embedded devices}
 \author{Justin A. S. Bull\\
 	\texttt{justin.bull@ryerson.ca}\\
 	Department of Computer Science,\\
 	Ryerson University\\}
+\date{September 28, 2013}
 
 \begin{document}
 \maketitle
 
-\begin{abstract}
-\lipsum
-\end{abstract}
+\section{A Cyclist's Problem}
+One of the crucial moments for a cyclist is immediately after a collision, unfortunately it's also one of the most confusing. When a cyclist is involved in any sort of collision, they're subject severe injury, psychological shock, or being taken advantage of. More often than not, what they need is medical attention and police involvement. There is currently a problem with technology being under-utilized to provide a service to cyclists when they're dazed and confused seconds after a collision.
 
-\tableofcontents
+\section{A Tangible Solution}
+I propose a potential solution to the problem: \onstar. By using technological advances in the past decade, \onstar, at its core, would use the Global Positioning System (GPS)\footnote{\url{http://en.wikipedia.org/wiki/Global_Positioning_System}}, 3-dimensional accelerometers, and the Short Message Service (SMS)\footnote{\url{http://en.wikipedia.org/wiki/Short_Message_Service}} to detect a collision and immediately communicate with an emergency contact, providing the cyclist's location and other relevant data so that they receive the help they may so desperately need. It'd be a simple set-and-forget device, accessible to the commuter for under \$100 and a trivial monthly service fee.
 
-\section{Narrative}
-\lipsum[1]
+The \onstar\ project would be comprised of two components: an embedded device (the device), and a web-application interface (the web app).
 
-\section{Device Components}
-\lipsum[1]
-\subsection{GPS Sensor}
-\lipsum[1]
-\subsection{GSM Module}
-\lipsum[1]
-\subsection{3-Dimensional Accelerometer}
-\lipsum[1]
-\subsection{Piezo Sensor}
-\lipsum[1]
-\subsection{SIM or Micro-SIM Card}
-\lipsum[1]
-\subsection{Activation Buzzer}
-\lipsum[1]
-\subsection{Lithium Ion Battery}
-\lipsum[1]
+\subsection{The Device}
+The aim is to make a physical device that's small, resistant to theft, with a long battery life, and easily mountable onto a bike frame. It'd use the SMS to dispatch Application Programming Interface (API)\footnote{\url{http://en.wikipedia.org/wiki/Application_programming_interface}} calls to a the web-app component who's responsible for contacting a phone number (via text-to-speech or text message) or e-mail address. Upon detecting a collision, the device will also begin to emit a continuous beep to inform the cyclist that it's been activated and the previously configured emergency contact has been informed of the event.
 
-\section{Physical Considerations}
-\lipsum[1]
-\subsection{Form Factor}
-\lipsum[1]
-\subsection{GPS Reliability}
-\lipsum[1]
-\subsection{Anti-Theft Measures}
-\lipsum[1]
-\subsection{Battery Time}
-\lipsum[1]
+\subsubsection{API Communication}
+{\em Twilio}, a cloud communications company, provides a service where you can programmatically send and receive SMS messages or phone calls using a 3rd party API.\footnote{\url{http://www.twilio.com/sms/api}} {\em Twilio}'s service would be the backbone for communication between the device and the web app.
 
-\section{Calibration \& Data}
-\lipsum[1]
-\subsection{Police Collision Data}
-\lipsum[1]
-\subsection{False-Positive Mitigation}
-\lipsum[1]
+Every API request to the web app would fit under 140 characters, as would the responses. Presently, the core calls would be:
 
-\section{Types of Collisions}
-\lipsum[1]
-\subsection{``T-Bone'' Collision}
-\lipsum[1]
-\subsection{``Head-On'' Collision}
-\lipsum[1]
-\subsection{``Rear-end'' Collision}
-\lipsum[1]
+\begin{enumerate}
+	\item {\tt collision}: A collision has occurred at the following latitude and longitude GPS coordinates.
+	\item {\tt low-bat}: The battery on the device is low.
+	\item {\tt beep}: The device is instructed to emit a beeping sound from the web app.
+\end{enumerate}
 
-\section[External Communication]{External Communication using GSM SMS to an external API}
-\lipsum
+The device would have bi-directional communication, capable of sending calls based on sensory data or performing actions based on SMS messages from the web app.
 
-\section{Cost of Prototype / Sales Margin}
-\lipsum
+\subsubsection{Collision Detection}
+Using collision data collected from the Toronto Police Service, I'd research what G-forces usually define a `collision'. Additionally, personal experimentation would be performed to see what normal G-forces are generated from every day biking. Based on these two data sources, I should be able to define the threshold the device uses to determine whether or not a collision has occurred.
+
+I plan to have the device guess at what type of collision the cyclist was involved in, be it a dangerous fall, ``T-bone'', ``head-on'', or ``rear-end'' collision with another vehicle.
+
+\subsection{The Web App}
+Written in Ruby\footnote{\url{https://www.ruby-lang.org/en/}} (using the Ruby on Rails framework{\footnote{\url{http://rubyonrails.org/}}) the web application would be responsible for an API back-end for the device and graphical front-end for the user.
+
+\subsubsection{The Back-End API}
+An API would be exposed such that the device is capable of communicating to the web app and vice versa using {\em Twilio} as the middleware. Essentially, the back-end API would be communicating with {\em Twilio}'s API (who's operating on behalf of the device).
+
+Since the embedded device is limited in capability, it's API may not support the verbosity or variable-length nature of such popular data-interchange formats like JSON\footnote{\url{http://www.json.org/}} or XML.\footnote{\url{http://en.wikipedia.org/wiki/XML}} As a result, I will define a custom API message structure (the payload) that {\em Twilio} would deliver to the device to perform an action. It'd be fixed-length and its detailed design would make itself apparent as the prototype is constructed.
+
+\subsubsection{The Front-End GUI}
+A simple interface available on the World Wide Web for a user to login to and register their device, configure emergency contacts \& corresponding message to be sent, and view previously detected collisions plotted on a map using the collected GPS data.
+
+An additional feature would be a ``Find my Bike'' whereby the user can click a button on the web app and the device will emit a beep for 45 seconds.
+
+\subsection{Protyping}
+
 
 \end{document}  
