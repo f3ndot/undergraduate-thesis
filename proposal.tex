@@ -39,7 +39,7 @@ The aim is to make a physical device that's small, resistant to theft, with a lo
 Every API request to the web app would fit under 140 characters (140 bytes), as would the responses. Presently, the core calls would be:
 
 \begin{enumerate}
-	\item {\tt collision}: A collision has occurred at the following latitude and longitude GPS coordinates.
+	\item {\tt collision}: A collision has occurred at the following latitude and longitude GPS coordinates. The device guesses the collision type.
 	\item {\tt low-bat}: The battery on the device is low.
 	\item {\tt beep}: The device is instructed to emit a beeping sound from the web app.
 \end{enumerate}
