@@ -55,7 +55,7 @@ I plan to have the device guess at what type of collision the cyclist was involv
 Written in Ruby\footnote{\url{https://www.ruby-lang.org/en/}} (using the Ruby on Rails framework{\footnote{\url{http://rubyonrails.org/}}) the web application would be responsible for an API back-end for the device and graphical front-end for the user.
 
 \subsubsection{The Back-End API}
-An API would be exposed such that the device is capable of communicating to the web app and vice versa using {\em Twilio} as middleware. Essentially, the back-end API would be communicating with {\em Twilio}'s API (who's operating on behalf of the device).
+An API would be exposed such that the device is capable of communicating to the web app and vice versa using {\em Twilio} as middleware. Essentially, the back-end API would be communicating with {\em Twilio}'s API, who's operating on behalf of the device.
 
 Since the embedded device is limited in capability, it's API may not support the verbosity or variable-length nature of such popular data-interchange formats like JSON\footnote{\url{http://www.json.org/}} or XML.\footnote{\url{http://en.wikipedia.org/wiki/XML}} As a result, I will define a custom API message structure (the payload) that {\em Twilio} would deliver to the device to perform an action. It'd be fixed-length and its detailed design would make itself apparent as the prototype is constructed.
 
