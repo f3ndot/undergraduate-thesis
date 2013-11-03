@@ -23,7 +23,9 @@
 \section{A Cyclist's Problem}
 One of the crucial moments for a cyclist is immediately after a collision, unfortunately it's also one of the most confusing. When a cyclist is involved in any sort of collision, they're subject severe injury, psychological shock, or being taken advantage of. More often than not, what they need is medical attention and police involvement. There is currently a problem with technology being under-utilized to provide a service to cyclists when they're dazed and confused seconds after a collision.
 
-What the average cyclist needs is help to already be on the way while they orient themselves and try move to safe spot to rest, if they can.
+What the average cyclist needs is help to already be on the way while they orient themselves and try move to safe spot to rest, if they can. I believe this is a significant problem for any urban commuter that uses cycling as a mode of transportation. Furthermore, I believe this is a problem that no one has really attempted to solve using technology as a tool.
+
+Having been in a few collisions myself, I can speak of their powerfully disorientating nature and I'm personally motivated by the solution presented in this proposal.
 
 \section{A Tangible Solution}
 To this problem I propose a potential solution: \onstar. By using technological advances in the past decade, \onstar, at its core, would use the Global Positioning System (GPS)\footnote{\url{http://en.wikipedia.org/wiki/Global_Positioning_System}}, 3-dimensional accelerometers, and the Short Message Service (SMS)\footnote{\url{http://en.wikipedia.org/wiki/Short_Message_Service}} to detect a collision and immediately communicate with an emergency contact, providing the cyclist's location and other relevant data so that they receive the help they may so desperately need. It'd be a simple set-and-forget device, accessible to the average commuting cyclist for under \$100 and an additional trivial monthly service fee.\footnote{Due to the implementation strategy a monthly fee would have to be charged in order to recoup the costs of an activate phone line.}
@@ -64,7 +66,29 @@ A simple interface available on the World Wide Web for a user to login to and re
 
 An additional feature would be a ``Find my Bike'' whereby the user can click a button on the web app and the device will emit a beep for 45 seconds.
 
-\section{Prototyping}
+\section{Prototype and Technical Document}
+\subsection{Prototype}
 For the thesis, in addition to providing a technical document, I'd build a device prototype and minimum viable product web application. The device would be able to perform the basic function of detecting a collision and reporting it to the web app and the web app would be capable of informing an emergency contact. Current plans is to use an Arduino prototyping platform\footnote{\url{http://www.arduino.cc/}} for the device.
+
+\subsection{Technical Document}
+The thesis will include a technical document, providing a full schematic of the prototype and architecture of the web app. Furthermore, a detailed description of the custom communication API will be defined.
+
+In addition to the specifics and implementation details of the prototype, the G-force data collected from the TPS and personal experiments will be presented. Conclusions and design decisions from the results will also be described.
+
+\section{Required Background Reading \& Research}
+The solution described above is quite a mouthful, utilizing multiple technologies to provide a unique and effective product. The following topics and technologies would have to be researched in order to have enough knowledge to carry out the thesis:
+
+\subsection{Prototyping Arduino}
+Arduino uses the C programming language, which I'm already mildly familiar with in the context of personal computers running Linux. However, the Arduino is an embedded device, and I'll have to learn the constraints of writing software for such limited capacity.
+
+For every component of the device (GPS, GSM, 3D accelerometer), I'll have to source the component I wish to use, learn about it via its data sheets, and then integrate it into the Arduino board. I presently have no experience or knowledge in embedded GPS chips, full-stack GSM devices, or 3D accelerometers. Background research will go mostly into GSM SMS communications on an embedded device, as that'd be the most challenging.
+
+Furthermore, almost every single component that'd be used in the prototype will require extensive research in how it works, what type is right for this thesis, and how it can be integrated into the device.
+
+\subsection{Collision Data}
+In order to program the device correctly, data on what G-forces are normally exerted on a bike during a collision will be needed. I'll have to establish contact and cooperation of the Toronto Police Service to access their scene reconstruction information in hopes to get an introductory understanding of occurs during a collision.
+
+\subsection{{\em Twilio} API}
+The documentation\footnote{\url{http://www.twilio.com/docs/api}} and libraries\footnote{\url{https://github.com/twilio/twilio-ruby}} for the {\em Twilio} API will have to be read, understood, and applied both in hardware and in software in order for the device to communicate to the web app.
 
 \end{document}  
