@@ -7,4 +7,22 @@
     = csrf_meta_tags
 
   %body
-    = yield
+    .navbar.navbar-inverse.navbar-fixed-top{role: 'navigation'}
+      .container
+        .navbar-header
+          %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '.navbar-collapse'}}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to image_tag('logo-withtext.png'), root_path, class: 'navbar-brand'
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active= link_to 'Home', root_path
+
+    .container
+      .app-body
+        = yield
+        .footer.text-center
+          %hr
+          = image_tag 'logo.png'
