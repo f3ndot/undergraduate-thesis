@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
 
+# Use the HAML engine in generators
+gem 'haml-rails'
+
+# Bootstrap
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
