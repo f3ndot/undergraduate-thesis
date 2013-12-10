@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# Twilio and micro API for device communication
+gem 'grape'
+gem 'twilio-ruby'
+
 # Use the HAML engine in generators
 gem 'haml-rails'
 
