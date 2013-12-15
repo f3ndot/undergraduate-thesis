@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def welcome
   end
 
+  def license
+  end
+
   # GET /pages
   # GET /pages.json
   def index

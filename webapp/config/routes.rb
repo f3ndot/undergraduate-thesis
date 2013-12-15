@@ -8,6 +8,7 @@ Webapp::Application.routes.draw do
   resources :pages do
     collection do
       get 'welcome'
+      get 'license'
     end
   end
 

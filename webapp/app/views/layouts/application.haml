@@ -26,4 +26,11 @@
         = yield
         .footer.text-center
           %hr
-          = image_tag 'logo.png'
+          = image_tag 'logo.png', :height => 45, :width => 45
+          %p.text-muted
+            %small
+              Unless otherwise noted, all copy, images, documents are licnesed under the
+              = link_to 'Creative Commons Attribution-ShareAlike 4.0 International License', license_pages_path(:anchor => 'creative')
+              and all source-code under the
+              = succeed '.' do
+                = link_to 'MIT License', license_pages_path(:anchor => 'source')
