@@ -18,7 +18,8 @@
           = link_to image_tag('logo-withtext.png'), root_path, class: 'navbar-brand'
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li.active= link_to 'Home', root_path
+            = nav_link 'Home', root_path
+            = nav_link 'Devices', devices_path
 
     .container
       .app-body
