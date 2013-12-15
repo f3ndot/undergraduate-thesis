@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131107024020) do
+ActiveRecord::Schema.define(version: 20131215174944) do
+
+  create_table "accelerometer_data", force: true do |t|
+    t.integer  "log_entry_id"
+    t.decimal  "x_max",        precision: 6, scale: 9
+    t.decimal  "y_max",        precision: 6, scale: 9
+    t.decimal  "z_max",        precision: 6, scale: 9
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accelerometer_data", ["log_entry_id"], name: "index_accelerometer_data_on_log_entry_id"
+
+  create_table "devices", force: true do |t|
+    t.string   "name"
+    t.string   "version"
+    t.string   "serial"
+    t.string   "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "log_entries", force: true do |t|
+    t.string   "location"
+    t.decimal  "latitude",   precision: 6, scale: 9
+    t.decimal  "longitude",  precision: 6, scale: 9
+    t.text     "notes"
+    t.integer  "device_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "log_entries", ["device_id"], name: "index_log_entries_on_device_id"
 
   create_table "pages", force: true do |t|
     t.string   "title"

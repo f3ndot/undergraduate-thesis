@@ -1,0 +1,29 @@
+%h1 Listing log_entries
+
+%table
+  %tr
+    %th Location
+    %th Latitude
+    %th Longitude
+    %th Notes
+    %th Device
+    %th Accelerometer data
+    %th
+    %th
+    %th
+
+  - @log_entries.each do |log_entry|
+    %tr
+      %td= log_entry.location
+      %td= log_entry.latitude
+      %td= log_entry.longitude
+      %td= log_entry.notes
+      %td= log_entry.device
+      %td= log_entry.accelerometer_data
+      %td= link_to 'Show', log_entry
+      %td= link_to 'Edit', edit_log_entry_path(log_entry)
+      %td= link_to 'Destroy', log_entry, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Log entry', new_log_entry_path

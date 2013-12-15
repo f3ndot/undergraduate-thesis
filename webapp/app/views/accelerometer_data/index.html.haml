@@ -1,0 +1,25 @@
+%h1 Listing accelerometer_data
+
+%table
+  %tr
+    %th Log entry
+    %th X max
+    %th Y max
+    %th Z max
+    %th
+    %th
+    %th
+
+  - @accelerometer_data.each do |accelerometer_datum|
+    %tr
+      %td= accelerometer_datum.log_entry
+      %td= accelerometer_datum.x_max
+      %td= accelerometer_datum.y_max
+      %td= accelerometer_datum.z_max
+      %td= link_to 'Show', accelerometer_datum
+      %td= link_to 'Edit', edit_accelerometer_datum_path(accelerometer_datum)
+      %td= link_to 'Destroy', accelerometer_datum, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Accelerometer datum', new_accelerometer_datum_path

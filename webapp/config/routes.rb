@@ -1,4 +1,10 @@
 Webapp::Application.routes.draw do
+  resources :accelerometer_data
+
+  resources :log_entries
+
+  resources :devices
+
   resources :pages do
     collection do
       get 'welcome'
