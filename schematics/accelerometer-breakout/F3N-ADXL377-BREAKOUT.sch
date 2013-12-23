@@ -5975,7 +5975,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <plain>
 <text x="241.7" y="64.62" size="2.54" layer="94" font="vector">1</text>
 <text x="246.78" y="82.4" size="2.54" layer="94" font="vector" align="bottom-right">Licensed under:
-CC-BY-SA 4.0</text>
+CC BY-SA 4.0</text>
 <text x="150.26" y="82.4" size="2.54" layer="94" font="vector">By Justin Bull (f3ndot)
 https://www.justinbull.ca/</text>
 </plain>
